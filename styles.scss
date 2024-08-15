@@ -1,0 +1,97 @@
+/* Resets */
+ul,
+li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    font-family: sans-serif;
+}
+
+$color1Inactive: #99B0DA;
+$color1Active: #29509D;
+$color2Inactive: #D8D8D8;
+$color2Active: #676767;
+$animationSpeed: 1s;
+
+.barchart-wrapper {
+    display: flex;
+    max-width: 1000px;
+    height: 600px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 25px;
+
+    .barchart-group {
+        width: 50%;
+        display: flex;
+
+        .barchart-labels {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+
+            li {
+                font-size: 3rem;
+                color: $color1Inactive;
+
+                &.active {
+                    color: $color1Active;
+                    font-weight: 800;
+                    transition: $animationSpeed all;
+                }
+            }
+        }
+
+        .barchart {
+            width: 50%;
+            display: flex;
+            align-items: flex-end;
+
+            li {
+                width: 100%;
+                background-color: $color1Inactive;
+                position: relative;
+
+                &.active:before {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: $color1Active;
+                    animation: $animationSpeed activeIn 0s forwards;
+                }
+            }
+        }
+
+        &.alt {
+            .barchart-labels {
+                text-align: right;
+            }
+
+            .barchart li {
+                background-color: $color2Inactive;
+
+                &.active:before {
+                    background-color: $color2Active;
+                }
+            }
+        }
+    }
+}
+
+@keyframes activeIn {
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 100%;
+    }
+}
