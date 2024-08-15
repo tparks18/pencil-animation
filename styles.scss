@@ -27,9 +27,10 @@ $animationSpeed: 1s;
     .barchart-group {
         width: 50%;
         display: flex;
+        justify-content: space-between;
 
         .barchart-labels {
-            width: 50%;
+            width: 100%;
             height: 100%;
             display: flex;
             justify-content: space-between;
@@ -48,11 +49,25 @@ $animationSpeed: 1s;
         }
 
         .barchart {
-            width: 50%;
+            width: 134x;
+            min-width: 134px;
             display: flex;
             align-items: flex-end;
+            position: relative;
 
-            li {
+            .pencil-tip {
+                position: absolute;
+                width: 100%;
+                top: calc(100% - 25px);
+                right: 0;
+
+                img {
+                    width: 100%;
+                    aspect-ratio: 250/267;
+                }
+            }
+
+            .item {
                 width: 100%;
                 background-color: $color1Inactive;
                 position: relative;
@@ -75,7 +90,7 @@ $animationSpeed: 1s;
                 text-align: right;
             }
 
-            .barchart li {
+            .barchart .item {
                 background-color: $color2Inactive;
 
                 &.active:before {
